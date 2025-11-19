@@ -43,8 +43,7 @@ exports.getStudentResults = async (req, res) => {
       ? req.user.studentId._id
       : req.user.studentId;
 
-    console.log("📊 Getting results for student:", studentId);
-    console.log("📊 User making request:", req.user.email);
+  // getting results for student
 
     if (!studentId) {
       return res.status(400).json({
@@ -57,7 +56,7 @@ exports.getStudentResults = async (req, res) => {
       .populate("student")
       .sort({ semester: 1 });
 
-    console.log("📊 Found results:", results.length);
+  // found results count
 
     if (results.length === 0) {
       return res.status(404).json({
